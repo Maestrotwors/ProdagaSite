@@ -1,0 +1,7 @@
+CACHE MANIFEST
+#Ver 6
+#localhost/
+
+NETWORK:
+*
+
