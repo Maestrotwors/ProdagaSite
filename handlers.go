@@ -63,7 +63,7 @@ func ApiHandler(w http.ResponseWriter, r *http.Request) {
         default:  
             fmt.Fprintln(w, "Метод не распознан") 
     }
-}
+} 
 
 //StartHandler Хандлер роутинга основных маршрутов 
 func StartHandler(w http.ResponseWriter, r *http.Request,Handler string) {
