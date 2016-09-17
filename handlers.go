@@ -60,7 +60,7 @@ func ApiHandler(w http.ResponseWriter, r *http.Request) {
         case "Logout":
             Logout(w,r)
 
-        default: 
+        default:  
             fmt.Fprintln(w, "Метод не распознан") 
     }
 }
