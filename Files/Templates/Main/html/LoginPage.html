@@ -1,0 +1,21 @@
+<% define "LoginPage.html" %>`
+    <div class="box login">
+        <div class="heading">
+            <h1> Введите логин и пароль</h1>
+        </div>
+        <div class="content" style="min-height: 150px; overflow: hidden;">
+            Логин<input type="text" id="login" name="login" value="" style="margin: 10px 3px;width: 178px;text-align: center;"> Пароль <input type="password" id="password" name="password" value="" style="margin: 10px 3px;width:178px; text-align: center;">
+            <table style="width: 100%;">
+                <tbody>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#" style="float: left;" v-on:click="login()" onclick="return false" class="button login">Войти</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    `
+    <% end %>

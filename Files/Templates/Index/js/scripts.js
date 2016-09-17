@@ -1,0 +1,3 @@
+<% define "vue.js" %>
+
+<% end %>

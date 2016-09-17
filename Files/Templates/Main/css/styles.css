@@ -1,0 +1,6 @@
+<%define "styles" %>.active-link-nav {
+    font-weight: bold;
+    backgroun-color: red;
+}
+
+<% end %>

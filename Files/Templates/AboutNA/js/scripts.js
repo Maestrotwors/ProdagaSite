@@ -1,0 +1,3 @@
+<% define "script.js" %>
+
+<% end %>
