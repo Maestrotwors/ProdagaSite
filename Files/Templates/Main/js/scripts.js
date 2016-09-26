@@ -1,32 +1,81 @@
 <% define "vue.js" %>
 <% template "localDB.js" %>
 
+window.MainApp = { router: null, MyParam1: "MyParam111111", MyParam2: "MyParam2222" }
+
 var Index = Vue.extend({
-    template: <% template "MainPage.html" %>
+    template: "#MainPage"
 })
 
 var Forum = Vue.extend({
-    template: <% template "ForumPage.html" %>
+    template: "#ForumPage"
 })
 
-var Chat = Vue.extend({
-    template: `<p>This is Chat!</p>`
+var UserInfo = Vue.extend({
+    template: "#UserInfo"
 })
 
-var Settings = Vue.extend({
-    template: <% template "SettingsPage.html" %>
+var Sale = Vue.extend({
+    template: "#SalePage",
+    data: function() {
+        return {
+            image: ''
+        }
+    },
+    methods: {
+        SaleSubmit: function() {},
+        show: function() {
+            alert("showww");
+        }
+    }
 })
+
 
 var About = Vue.extend({
-    template: <% template "AboutPage.html" %>
+    template: "#AboutPage"
 })
 
-var Training = Vue.extend({
-    template: <% template "TrainingPage.html" %>
-})
+$(document).ready(function() {
+
+    $('input[type="file"]').change(function() {
+        var file = this.files; //Files[0] = 1st file
+        var numFiles = this.files.length;
+        alert(numFiles);
+        if (file[0]) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file[0], 'UTF-8');
+            reader.onload = function(event) {
+                var result = event.target.result;
+                $('.pic_1').attr('src', event.target.result);
+
+            };
+        }
+    })
+
+    $("form#FormUpload").submit(function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: '/api/upload',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(returndata) {
+                alert(returndata);
+            }
+        });
+
+        return false;
+    });
+});
+
 
 var Login = Vue.extend({
-    template: <% template "LoginPage.html" %>,
+    template: "#LoginPage",
     data: function() {
         return {
             param1: "parammmmmm1"
@@ -38,7 +87,7 @@ var Login = Vue.extend({
                 "login": $("#login").val(),
                 "password": $("#password").val()
             }).success(function(response) {
-                //alert(response);
+                alert(response);
                 if (response > "") {
                     localStorage.Auth = "1";
                     arr = JSON.parse(JSON.stringify(response));
@@ -55,6 +104,14 @@ var Login = Vue.extend({
                     document.cookie = "SessionId=0";
                 }
             });
+        },
+        UploadFile: function(e) {
+            alert('upl');
+            //var files = e.target.files || e.dataTransfer.files;
+        },
+        onFileUpload: function(e) {
+            alert('upl');
+            //var files = e.target.files || e.dataTransfer.files;
         }
     },
     events: {
@@ -107,8 +164,6 @@ var App = Vue.extend({
             WSConnection.Close();
         },
         logout: function() {
-            //router.replace("/");
-            //alert("logout");
             alert(11111111111111111);
             UserName = "";
             localStorage.UserName = "";
@@ -125,17 +180,21 @@ var App = Vue.extend({
     },
 })
 
-var router = new VueRouter({
+
+
+window.MainApp.router = new VueRouter({
     history: true
 })
 
-router.map({
+window.MainApp.router.map({
     '/': {
-        component: Index,
+        component: Index
+    },
+    '/user/id:id': {
+        component: UserInfo
     },
     '/forum': {
-        component: Forum,
-        auth: true
+        component: Forum
     },
     '/login': {
         component: Login
@@ -143,26 +202,16 @@ router.map({
     '/about': {
         component: About
     },
-    '/training': {
-        component: Training,
-        auth: true,
-        activate: function() {
-            alert("Training");
-        }
-    },
-    '/chat': {
-        component: About
-    },
-    '/settings': {
-        component: Settings,
+    '/sale': {
+        component: Sale,
         auth: true
     }
 })
 
-router.start(App, '#app')
+window.MainApp.router.start(App, '#app')
 
 
-router.beforeEach(function(transition) {
+window.MainApp.router.beforeEach(function(transition) {
         if (transition.to.auth && localStorage.Auth != "1") {
             transition.redirect('/login');
         } else {

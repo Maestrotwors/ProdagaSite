@@ -1,0 +1,30 @@
+<% define "CorePage" %>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="static/css/bootstrap.css">
+        <link rel="stylesheet" href="static/css/font-awesome.css">
+        <link rel="stylesheet" href="static/css/animate.css">
+        <style>
+            <% template "styles.css" %>
+        </style>
+        <% template "library.js" %>
+    </head>
+
+    <body>
+        <% template "IndexPage.html" %>
+            <% template "MainPage.html" %>
+                <% template "SalePage.html" %>
+                    <% template "AboutPage.html" %>
+                        <% template "ForumPage.html" %>
+                            <% template "UserInfoPage.html" %>
+                                <script>
+                                    <% template "socket.js" %>
+                                    <% template "vue.js" %>
+                                </script>
+    </body>
+
+    </html>
+    <% end %>

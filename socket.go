@@ -7,7 +7,10 @@ import (
     //"sync"
     "fmt"
     "log"
+    //types "./Package/Types/"
 )
+
+
 
 func SendMessageToClient(sockId uint64, msg string) {
   	ActiveClients[sockId].websocket.WriteMessage(websocket.TextMessage, []byte(msg))  

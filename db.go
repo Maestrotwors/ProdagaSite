@@ -25,18 +25,19 @@ func DB_Migration() {
     //db.LogMode(true)
     db.AutoMigrate(
         User{},
-        Question{},
-        Variant{},
-        QuestionComment{},
-        DataBase{},
+        Region{},
+        //Question{},
+        //Variant{},
+        //QuestionComment{},
+        AutoSale{},
         Session{})
 
-    db.Model(&Variant{}).AddForeignKey("Question_id", "Questions (id)", "CASCADE", "CASCADE")
-    db.Model(&Question{}).AddForeignKey("User_id", "Users (id)", "CASCADE", "CASCADE")
-    db.Model(&QuestionComment{}).AddForeignKey("Question_id", "Questions (id)", "CASCADE", "CASCADE")
-    db.Model(&QuestionComment{}).AddForeignKey("User_id", "Users (id)", "CASCADE", "CASCADE")
-    db.Model(&DataBase{}).AddForeignKey("User_id", "Users (id)", "CASCADE", "CASCADE")
-    db.Model(&Session{}).AddForeignKey("User_id", "Users (id)", "CASCADE", "CASCADE")
+    //db.Model(&Variant{}).AddForeignKey("Question_id", "Questions (id)", "CASCADE", "CASCADE")
+    //db.Model(&Question{}).AddForeignKey("User_id", "Users (id)", "CASCADE", "CASCADE")
+    //db.Model(&QuestionComment{}).AddForeignKey("Question_id", "Questions (id)", "CASCADE", "CASCADE")
+    //db.Model(&QuestionComment{}).AddForeignKey("User_id", "Users (id)", "CASCADE", "CASCADE")
+    //db.Model(&DataBase{}).AddForeignKey("User_id", "Users (id)", "CASCADE", "CASCADE")
+    //db.Model(&Session{}).AddForeignKey("User_id", "Users (id)", "CASCADE", "CASCADE")
 
     //db.Model(&OCENKA{}).AddForeignKey("disc_id", "discs (id)", "CASCADE", "CASCADE")
 

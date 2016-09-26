@@ -8,7 +8,13 @@ import(
      "net/http"
 )
 
+var counterConnections NumberConnectionType 
 
+func return_CounterConnections() uint64{  
+    counterConnections.Lock()
+    defer counterConnections.Unlock()
+    return counterConnections.counters
+}
 
 type User struct {
     Id  int `gorm:"primary_key"`
@@ -20,6 +26,37 @@ type User struct {
     //RoditelId int
 }
 
+type CategoryType struct {
+    Id  int `gorm:"primary_key"`
+    CategoryName string  //Auto, Nedvigimost
+}
+
+type Region struct {
+    Id  int `gorm:"primary_key"`
+    Region string
+}
+
+type AutoSale struct {
+    Id  int `gorm:"primary_key"`
+    RegUserId int
+    UserText string
+    UserDescription string
+    DateTime time.Time `sql:"DEFAULT:current_timestamp"`
+    RegionId int
+    Price float64   
+    Currency int
+    Year int
+    Motor int 
+}
+
+type Session struct{
+    Id int `gorm:"primary_key"`
+    SessionId string
+    UserId int `sql:"not null"`
+    Created string `sql:"DEFAULT:current_timestamp"`
+}
+
+/*
 type Question struct {
     Id  int `gorm:"primary_key"`
     Question string  
@@ -52,12 +89,7 @@ type DataBase struct {
     DeletedTime time.Time  
 }
 
-type Session struct{
-    Id int `gorm:"primary_key"`
-    SessionId string
-    UserId int `sql:"not null"`
-    Created string `sql:"DEFAULT:current_timestamp"`
-}
+
 
 type Forum struct{
     Id int `gorm:"primary_key"`
@@ -79,7 +111,7 @@ type DBDirectories struct{
     Directory string
     ParentId int `sql:"not null"`
     Created string `sql:"DEFAULT:current_timestamp"`
-}
+}*/
 
 //------------------------
 
@@ -90,7 +122,7 @@ type ClientConnType struct {
 }
 
 type NumberConnectionType struct {
-    counters uint64
+    counters uint64 
     sync.Mutex
 }
 
@@ -119,7 +151,7 @@ type SecureAuthorize struct {
 
 
 
-//----------------- УДАЛИТЬ ПОМЛЕ ИСПЫТАНИЯ
+//----------------- ������� ����� ���������
 
 
 //getSession Functions
@@ -129,7 +161,7 @@ type SecureAuthorize struct {
       session:=Session{}
       return session
     }else{
-        //log.Println("Кука считана", cookie.Value)
+        //log.Println("���� �������", cookie.Value)
         session:=SessionList[cookie.Value]
         return session
     }

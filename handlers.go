@@ -11,6 +11,7 @@ import(
 	    "github.com/tdewolff/minify/js"
         "github.com/gorilla/mux"
         "io/ioutil"
+        //"log"
 )
 
 
@@ -33,7 +34,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request,Path string) {
     m.AddFunc("text/css", css.Minify)
     m.AddFunc("text/html", html.Minify)
     m.AddFunc("text/javascript", js.Minify)
-    err := templates.ExecuteTemplate(&doc, "IndexPage", nil)
+    err := templates.ExecuteTemplate(&doc, "CorePage", nil)
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
@@ -50,6 +51,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request,Path string) {
 func ApiHandler(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Server", "Go Web Server by Rakzin Roman")
     w.Header().Set("Content-type", "text/html; charset=utf-8")
+    
     vars:=mux.Vars(r)
     method:=vars["method"]
     switch method {
@@ -57,6 +59,9 @@ func ApiHandler(w http.ResponseWriter, r *http.Request) {
             Authorize(w,r)
         case "ping":
             Ping(w,r)
+        case "upload":
+            Upload(w,r)
+            fmt.Fprintln(w, "Upload") 
         case "Logout":
             Logout(w,r)
 

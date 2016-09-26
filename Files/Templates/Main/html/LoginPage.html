@@ -1,7 +1,7 @@
-<% define "LoginPage.html" %>`
-    <div class="box login">
+<% define "LoginPage.html" %>
+    <template class="box login" id="LoginPage">
         <div class="heading">
-            <h1> Введите логин и пароль</h1>
+            <h1> Введите логин и пароль, что б давать объявления и изменять их</h1>
         </div>
         <div class="content" style="min-height: 150px; overflow: hidden;">
             Логин<input type="text" id="login" name="login" value="" style="margin: 10px 3px;width: 178px;text-align: center;"> Пароль <input type="password" id="password" name="password" value="" style="margin: 10px 3px;width:178px; text-align: center;">
@@ -16,6 +16,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    `
+    </template>
     <% end %>

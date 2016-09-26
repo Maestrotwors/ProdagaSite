@@ -1,0 +1,39 @@
+<% define "SalePage.html" %>
+    <template id="SalePage">
+    <form method="POST" id="FormUpload" action="/api/upload" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>Текст владельца</td>
+                <td><input id="UserText" name="UserText"></td>
+            </tr>
+            <tr>
+                <td>Цена и валюта</td>
+                <td><input name="UserPrice"></td>
+            </tr>
+            <tr>
+                <td>Год выпуска</td>
+                <td><input name="UserYear"></td>
+            </tr>
+            <tr>
+                <td>Двигатель</td>
+                <td><input name="UserMotor"></td>
+            </tr>
+            <tr>
+                <td>Область</td>
+                <td><input name="UserOblast"></td>
+            </tr>
+            <tr>
+                <td>Описание</td>
+                <td><textarea></textarea></td>
+            </tr>
+        </table>
+        <input type="file" class="PictureAdd" name="files" multiple>
+        <div style="margin-top: 20px; " align="center " class="photoBorderPreview ">
+            <img class="photoImagePreview ">
+        </div>
+    </form>
+    <button @click="show ">1111</button>
+    <button onclick="$( '#FormUpload').submit() " v-on:click.prevent="SaleSubmit ">Добавить объявление {{window.myVue.MyParam2}}</button>
+     
+</template>
+    <% end %>

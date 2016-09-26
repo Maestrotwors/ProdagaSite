@@ -1,3 +1,69 @@
-<% define "MainPage.html" %>` Main Page
-    <a href="#" v-link="{ path: '/about'}">Войти</a>`
+<% define "MainPage.html" %>
+
+
+    <template id="MainPage">
+    <div class="row" style="margin: 0 1px 10px 1px; height: calc(100% - 65px);">
+        <div class="col-md-3" style="background-color:red;">
+            Фильтр<br/> param1
+            <br/> param2
+            <br/>param3
+        </div>
+        <div class="col-md-9" style="background-color:grey;">
+            <table class="tovar_list">
+                <tr class="tovar">
+                    <td>
+                        <div class="tovar_photo"></div>
+                    </td>
+                    <td>
+                        <div class="text_vladeltsa">Текст владельца</div><br/>
+                        <div class="text_price">Цена</div>
+                        <div class="text_year">Год</div>
+                        <div class="text_motor">Двигатель</div>
+                        <div class="text_oblast">Область</div>
+                        <div class="text_description">Краткое описание ....</div>
+                    </td>
+                </tr>
+                <tr class="tovar">
+                    <td>
+                        <div class="tovar_photo">111</div>
+                    </td>
+                    <td>
+                        <div class="text_vladeltsa">Текст владельца</div><br/>
+                        <div class="text_price">Цена</div>
+                        <div class="text_year">Год</div>
+                        <div class="text_motor">Двигатель</div>
+                        <div class="text_oblast">Область</div>
+                        <div class="text_description">Краткое описание ....</div>
+                    </td>
+                </tr>
+                <tr class="tovar">
+                    <td>
+                        <div class="tovar_photo">111</div>
+                    </td>
+                    <td>
+                        <div class="text_vladeltsa">Текст владельца</div><br/>
+                        <div class="text_price">Цена</div>
+                        <div class="text_year">Год</div>
+                        <div class="text_motor">Двигатель</div>
+                        <div class="text_oblast">Область</div>
+                        <div class="text_description">Краткое описание ....</div>
+                    </td>
+                </tr>
+                <tr class="tovar">
+                    <td>
+                        <div class="tovar_photo">111</div>
+                    </td>
+                    <td>
+                        <div class="text_vladeltsa">Текст владельца</div><br/>
+                        <div class="text_price">Цена</div>
+                        <div class="text_year">Год</div>
+                        <div class="text_motor">Двигатель</div>
+                        <div class="text_oblast">Область</div>
+                        <div class="text_description">Краткое описание ....</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </template>
     <% end %>

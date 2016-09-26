@@ -6,10 +6,14 @@ import(
         "time"
         "crypto/sha1"
         "github.com/jeffail/gabs" 
+        //params "./Package/Params/"
+        //types "./Package/Types/"
+        //"path/filepath"
         //"github.com/jinzhu/gorm"
         _ "github.com/lib/pq"
         "log"
         //"github.com/gorilla/mux"
+        //php "github.com/deuill/go-php"
 )
 
 //Authorize Авторизация
@@ -39,7 +43,50 @@ func Logout(w http.ResponseWriter, r *http.Request) {
     } 
     fmt.Fprintln(w, "<script>var date = new Date(0);document.cookie = 'SessionId=; path=/; expires=' + date.toUTCString();window.location.replace('/login');</script>")
 } 
-    
+
+func Upload(w http.ResponseWriter, r *http.Request) {
+    NewSale(w,r)
+}
+
+// FileSave
+func FileSave(){
+    /*
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    defer file.Close()
+
+    f, err := os.OpenFile("Files\\Upload\\Auto\\original\\id1_1_U1.jpg", os.O_WRONLY|os.O_CREATE, 0666) //handler.Filename
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    defer f.Close()
+    io.Copy(f, file)
+
+    fileNew, err := os.Open("Files\\Upload\\Auto\\original\\id1_1_U1.jpg")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    img, err := jpeg.Decode(fileNew)
+    if err != nil {
+        log.Fatal(err)
+    }
+    fileNew.Close()
+
+    m := resize.Resize(200, 140, img, resize.Lanczos3)
+
+    out, err := os.Create("Files\\Upload\\Auto\\min\\id1_1_U1_min.jpg")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer out.Close()
+
+    jpeg.Encode(out, m, nil)*/
+}
+
 // GormInsert
 func GormInsert(Data interface{}){
 
